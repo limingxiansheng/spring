@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+   <!-- <bean id="SpringIoc" class="com.atguigu.springr.SpringIocImpl1"></bean>-->
+    <bean name="SpringIoc" class="com.atguigu.springr.SpringIocImpl2"></bean>
+
+    <!--进行set注入操作-->
+    <bean id="SpringSet" class="com.atguigu.springr.SpringSet">
+     <property name="sex" value="许褚"></property>
+    </bean>
+
+</beans>

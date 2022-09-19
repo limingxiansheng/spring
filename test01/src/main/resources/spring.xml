@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<bean id="SpringFirst" class="com.atguigu.Hello.SpringFirstImpl"></bean>
+
+    <bean id="SpringSet" class="com.atguigu.Hello.SpringSet">
+        <property name="name" value="hello,spring"></property>
+     </bean>
+
+
+    <!--读取属性文件-->
+  <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+  <!--配置数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"></property>
+        <property name="url" value="${jdbc.url}"></property>
+        <property name="username" value="${jdbc.username}"></property>
+        <property name="password" value="${jdbc.password}"></property>
+    </bean>
+
+    <bean id="student" class="com.atguigu.data.Student">
+        <property name="name" value="王小二"></property>
+        <property name="age" value="23"></property>
+        <property name="scoreArr">
+            <array>
+                <value>100</value>
+                <value>20</value>
+                <value>30</value>
+                <value>40</value>
+                <value>50</value>
+            </array>
+        </property>
+        <property name="courseList">
+            <list>
+                <bean class="com.atguigu.data.Course">
+                    <property name="cno" value="1"></property>
+                    <property name="cname" value="抽烟"></property>
+                </bean>
+                <bean class="com.atguigu.data.Course">
+                    <property name="cno" value="2"></property>
+                    <property name="cname" value="喝酒"></property>
+                </bean>
+                <bean class="com.atguigu.data.Course">
+                    <property name="cno" value="3"></property>
+                    <property name="cname" value="烫头"></property>
+                </bean>
+            </list>
+        </property>
+        <property name="friendSet">
+            <set>
+                <value>蔡旭空</value>
+                <value>鹿晗</value>
+                <value>吴亦凡</value>
+            </set>
+        </property>
+        <property name="countriesMap">
+            <map>
+                <entry key="song" value="宋"></entry>
+                <entry key="tang" value="唐"></entry>
+                <entry key="qing" value="清"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="driver">com.mysql.cj.jdbc.Driver</prop>
+                <prop key="username">root</prop>
+                <prop key="password">123456</prop>
+                <prop key="url">jdbc:mysql://localhost:3307/atweb?serverTimezone=UTC</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

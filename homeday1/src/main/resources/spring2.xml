@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--9.给特殊值赋值-->
+    <bean id="propValue" class="com.atguigu.sad.PropValue">
+        <property name="commonValue">
+            <null/>
+        </property>
+        <property name="expression">
+            <value><![CDATA[5<6]]></value>
+        </property>
+    </bean>
+
+    <!--10.给bean的属性赋值： 使用p名称空间-->
+    <bean id="happyComponentImpl2" class="com.atguigu.happy.HappyComponentImpl1" p:compontName="东风快递">
+        <!--<property name="compontName" value="东风快递"></property>-->
+    </bean>
+
+    <!--11.给bean的属性赋值 ： 集合属性-->
+    <bean id="student" class="com.atguigu.sad.Student">
+        <property name="name" value="哈比布"></property>
+        <property name="age" value="23"></property>
+        <property name="scoreArr">
+            <array>
+                <value>21</value>
+                <value>22</value>
+                <value>23</value>
+                <value>24</value>
+            </array>
+        </property>
+        <property name="courseList">
+            <list>
+            <bean class="com.atguigu.sad.Course">
+                <property name="cno" value="2"></property>
+                <property name="cname" value="摔跤"></property>
+            </bean>
+            <bean class="com.atguigu.sad.Course">
+                <property name="cno" value="3"></property>
+                <property name="cname" value="格斗"></property>
+            </bean>
+            </list>
+        </property>
+      <property name="friendSet">
+          <set>
+              <value>联合国</value>
+              <value>大锅饭</value>
+              <value>五常</value>
+          </set>
+      </property>
+        <property name="countriesMap">
+            <map>
+                <entry key="小日本" value="哇哇叫"></entry>
+                <entry key="阿富汗" value="暴政当道"></entry>
+                <entry key="美利坚" value="畸形的人权"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="driver">com.mysql.cj.jdbc.Driver</prop>
+                <prop key="url">jdbc:mysql://localhost:3307/atweb?serverTimezone=UTC</prop>
+                <prop key="username">root</prop>
+                <prop key="password">123456</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--集合类型的bean-->
+    <bean id="happyComponent3" class="com.atguigu.happy.HappyComponentImpl1">
+        <property name="compontName" value="歼20"></property>
+    </bean>
+    <util:list id="componentList">
+        <bean class="com.atguigu.happy.HappyComponentImpl1">
+            <property name="compontName" value="辽宁号"></property>
+        </bean>
+        <bean class="com.atguigu.happy.HappyComponentImpl1">
+            <property name="compontName" value="福建号"></property>
+        </bean>
+        <bean class="com.atguigu.happy.HappyComponentImpl1">
+            <property name="compontName" value="林肯号"></property>
+        </bean>
+        <bean class="com.atguigu.happy.HappyComponentImpl1">
+            <property name="compontName" value="台湾号"></property>
+        </bean>
+        <ref bean="happyComponent3"></ref>
+    </util:list>
+
+
+    <!-- 返回的不是HappyMachineFactoryBean，而是HappyMachine，返回的是getObject()方法的返回值-->
+    <bean id="happyMachine4" class="com.atguigu.sad.HappyMachineFactoryBean">
+        <property name="machineName" value="比亚迪"></property>
+        <property name="componentName" value="梅赛德斯"></property>
+    </bean>
+
+<!--bean的作用域-->
+    <bean id="happyComponent6" class="com.atguigu.happy.HappyComponentImpl1" scope="singleton" >
+        <property name="compontName" value="刹车片"></property>
+    </bean>
+
+
+</beans>

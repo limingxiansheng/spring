@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="happyComponent2" class="com.atguigu.happy.HappyComponentImpl1" init-method="init123" destroy-method="destory321">
+
+        <property name="compontName" value="呱呱叫的呱呱蛙蛙"></property>
+    </bean>
+    <bean class="com.atguigu.happy.MyBeanPostProcessor"></bean>
+</beans>
